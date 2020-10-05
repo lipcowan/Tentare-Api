@@ -66,7 +66,7 @@ const UserService = {
         ['mi scusi', 'excuse me', 7],
         ['mi dispiace', 'i am sorry', 8],
         ['buon giorno', 'good morning', 9],
-        ['buona sera', 'good evening', 10]
+        ['buona sera', 'good evening', 10],
         ['buona notte', 'good night', null]
       ]
 

@@ -179,7 +179,7 @@ describe('User Endpoints', function () {
             { original: 'no', translation: 'no' },
             { original: 'per favore', translation: 'please' },
             { original: 'grazie', translation: 'thank you' },
-            { original: 'prego', translation: 'you are welcom' },
+            { original: 'prego', translation: 'you are welcome' },
             { original: 'mi scusi', translation: 'excuse me' },
             { original: 'mi dispiace', translation: 'i am sorry' },
             { original: 'buon giorno', translation: 'good morning' },
