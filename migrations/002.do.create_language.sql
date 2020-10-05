@@ -1,4 +1,4 @@
-CREATE TABLE "language" (
+CREATE TABLE IF NOT EXISTS "language" (
   "id" SERIAL PRIMARY KEY,
   "name" TEXT NOT NULL,
   "total_score" SMALLINT DEFAULT 0,

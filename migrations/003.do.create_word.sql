@@ -1,4 +1,4 @@
-CREATE TABLE "word" (
+CREATE TABLE IF NOT EXISTS "word" (
   "id" SERIAL PRIMARY KEY,
   "original" TEXT NOT NULL,
   "translation" TEXT NOT NULL,
@@ -11,6 +11,6 @@ CREATE TABLE "word" (
     ON DELETE SET NULL
 );
 
-ALTER TABLE "language"
+ALTER TABLE IF EXISTS "language"
   ADD COLUMN "head" INTEGER REFERENCES "word"(id)
     ON DELETE SET NULL;

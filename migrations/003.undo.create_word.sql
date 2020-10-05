@@ -1,4 +1,4 @@
-ALTER TABLE "language"
+ALTER TABLE IF EXISTS "language"
   DROP COLUMN IF EXISTS "head";
 
 DROP TABLE IF EXISTS "word";
