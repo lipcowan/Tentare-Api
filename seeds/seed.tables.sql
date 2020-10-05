@@ -29,8 +29,8 @@ VALUES
   (6, 1, 'mi scusi', 'excuse me', 7),
   (7, 1, 'mi dispiace', 'i am sorry', 8),
   (8, 1, 'boun giorno', 'good morning', 9),
-  (9, 1, 'bouna sera', 'good evening', 10)
-  (10, 1, 'bouna notte', 'good night', null)
+  (9, 1, 'bouna sera', 'good evening', 10),
+  (10, 1, 'bouna notte', 'good night', null);
 
 UPDATE "language" SET head = 1 WHERE id = 1;
 
