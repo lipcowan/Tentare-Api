@@ -1,7 +1,7 @@
 {
-  "name": "express-boilerplate",
+  "name": "tentare",
   "version": "0.0.1",
-  "description": "",
+  "description": "spaced repetition app",
   "main": "src/server.js",
   "scripts": {
     "test": "mocha --require test/setup.js",
