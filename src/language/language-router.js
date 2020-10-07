@@ -1,8 +1,10 @@
 const express = require('express')
 const LanguageService = require('./language-service')
 const { requireAuth } = require('../middleware/jwt-auth')
+const LinkedList = require('../LinkedList')
 
 const languageRouter = express.Router()
+const jsonBodyParser = express.json()
 
 languageRouter
   .use(requireAuth)
@@ -45,8 +47,25 @@ languageRouter
 
 languageRouter
   .get('/head', async (req, res, next) => {
-    // implement me
-    res.send('implement me!')
+    try {
+      const headWord = await LanguageService.getHeadWord(
+        req.app.get('db'),
+        req.language.id,
+        req.language.head
+      );
+
+      const resHeadWord = {
+        nextWord: headWord.original,
+        totalScore: headWord.totalScore,
+        wordCorrectCount: headWord.correct_count,
+        wordIncorrecttCount: headWord.incorrect_count
+      };
+
+      res.json(resHeadWord);
+      next();
+    } catch (error) {
+      next(error);
+    }
   })
 
 languageRouter
