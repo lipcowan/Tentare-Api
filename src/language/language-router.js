@@ -81,14 +81,16 @@ languageRouter.post("/guess", jsonBodyParser, async (req, res, next) => {
     let headWord = words.head.value;
     let nextWord = words.head.next.value;
     let totalScore = req.language.total_score;
-
     let isCorrect = false;
+
     if (guess === headWord.translation) {
       isCorrect = true;
       totalScore++;
     }
+
     const wordsList = gradeWord(words, isCorrect);
-    LanguageService.updateWordList(
+
+    await LanguageService.updateWordList(
       req.app.get("db"),
       wordsList,
       totalScore,
@@ -126,7 +128,7 @@ function gradeWord(words, answer) {
     headWord.correct_count++;
   }
   headWord.memory_value = mValue;
-  words.LinkedList(headWord, mValue);
+  words.insertAt(headWord, mValue);
   return words;
 }
 
