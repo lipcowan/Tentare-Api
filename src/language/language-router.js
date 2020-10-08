@@ -82,14 +82,52 @@ languageRouter.post("/guess", jsonBodyParser, async (req, res, next) => {
     let nextWord = words.head.next.value;
     let totalScore = req.language.total_score;
 
-    let correct = false;
+    let isCorrect = false;
     if (guess === headWord.translation) {
-      correct = true;
+      isCorrect = true;
       totalScore++;
     }
+    const wordsList = gradeWord(words, isCorrect);
+    LanguageService.updateWordList(
+      req.app.get("db"),
+      wordsList,
+      totalScore,
+      req.language.id
+    );
+    res.json({
+      nextWord: nextWord.original,
+      totalScore: totalScore,
+      wordCorrectCount: nextWord.correct_count,
+      wordIncorrectCount: nextWord.incorrect_count,
+      answer: headWord.translation,
+      isCorrect: isCorrect,
+    });
+  } catch (error) {
+    next(error);
   }
-
-  res.send("implement me!");
 });
+
+//need an M value starting at 1.
+//Need to double the value of M when the answer is correct.
+//When the answer is incorrect, we are setting M to 1.
+//Regardless of what M is, we are moving value back M amount of spaces.
+//Incorrect count ++ and correct count ++
+//Reset the head word. Insert at the M value.
+
+function gradeWord(words, answer) {
+  const headWord = words.head.value;
+  let mValue = headWord.memory_value;
+  words.remove(headWord);
+  if (!answer) {
+    mValue = 1;
+    headWord.incorrect_count++;
+  } else {
+    mValue *= 2;
+    headWord.correct_count++;
+  }
+  headWord.memory_value = mValue;
+  words.LinkedList(headWord, mValue);
+  return words;
+}
 
 module.exports = languageRouter;
