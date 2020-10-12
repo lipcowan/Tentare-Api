@@ -1,52 +1,46 @@
-# Spaced repetition API! Called Tentare!
+# Tentare, Italian for "To Try" -A Spaced Repetition Application to Learn Italian
 
-## Local dev setup
+Ciao! Welcome User! This is a spaced repetition application called "Tentare" that allows a user to learn Italian.
 
-If using user `dunder-mifflin`:
+# Live Link to app can be found: https://tentare-client.vercel.app/register
 
-```bash
-mv example.env .env
-createdb -U dunder-mifflin spaced-repetition
-createdb -U dunder-mifflin spaced-repetition-test
-```
+# Summary
 
-If your `dunder-mifflin` user has a password be sure to set it in `.env` for all appropriate fields. Or if using a different user, update appropriately.
+The purpose of this application is for the user to have the ability to learn Italian through the learning technique of spaced repetition. Spaced repetition concept is a learning technique that allows a user to review material at gradually increasing intervals. Once the Italian word presented is translated correctly, the word will be "pushed" back into the "deck" of words and will be encountered less often, whereas a word translated incorrectly will appear sooner so that they user can have more exposure to that specific word.
 
-```bash
-npm install
-npm run migrate
-env MIGRATION_DB_NAME=spaced-repetition-test npm run migrate
-```
+# Landing Page/Register Page Screenshot
 
-And `npm test` should work at this point
+</br>
+<a href="https://imgur.com/8k1GrM5"><img src="https://i.imgur.com/8k1GrM5.png" title="source: imgur.com" />Register</a>
 
-## Configuring Postgres
+<p>The user is prompted to the sign-up page when the application opens. The user is able to register their creditinals and sign-up to begin learning Italian. If the user already is registered, the user is able to click on "Already have an account", which will direct the user to login.</p>
 
-For tests involving time to run properly, configure your Postgres database to run in the UTC timezone.
+# Login Page Screenshot:
 
-1. Locate the `postgresql.conf` file for your Postgres installation.
-   1. E.g. for an OS X, Homebrew install: `/usr/local/var/postgres/postgresql.conf`
-   2. E.g. on Windows, _maybe_: `C:\Program Files\PostgreSQL\11.2\data\postgresql.conf`
-   3. E.g on Ubuntu 18.04 probably: '/etc/postgresql/10/main/postgresql.conf'
-2. Find the `timezone` line and set it to `UTC`:
+</br>
+<a href="https://imgur.com/3IA8mLW"><img src="https://i.imgur.com/3IA8mLW.png" title="source: imgur.com" />Login</a>
 
-```conf
-# - Locale and Formatting -
+<p>The user is able to login to the application if the user already registered</p>
 
-datestyle = 'iso, mdy'
-#intervalstyle = 'postgres'
-timezone = 'UTC'
-#timezone_abbreviations = 'Default'     # Select the set of available time zone
-```
+# Dashboard Page screenshot:
 
-## Scripts
+</br>
+<a href="https://imgur.com/crJzcuh"><img src="https://i.imgur.com/crJzcuh.png" title="source: imgur.com" />Dashboard</a>
 
-Start the application `npm start`
+<p> The user is able to see a list of all words provided by the application, along with a correct and incorrect count of the words they practiced. The user is able to scroll down to the bottom of the page and click on "Start" to start practicing the words. </p>
 
-Start nodemon for the application `npm run dev`
+# Learning Page screenshot:
 
-Run the tests mode `npm test`
+</br>
 
-Run the migrations up `npm run migrate`
+<a href="https://imgur.com/PFzcY4w"><img src="https://i.imgur.com/PFzcY4w.png" title="source: imgur.com" />Learning Page</a>
 
-Run the migrations down `npm run migrate -- 0`
+<p> The user is able to view the word in its original language and have type the English translation. The user is able to see the amount of correct and incorrect answers they have received, along with the total score. </p>
+
+# Learning Response Page screenshot:
+
+</br>
+
+<a href="https://imgur.com/3SKoM7t"><img src="https://i.imgur.com/3SKoM7t.png" title="source: imgur.com" />Learning Response</a>
+
+<p>The user is able to see if their translation input was correct or incorrect. The user received a message that their translation was either correct or not and then encouraged to try another word. </p>
